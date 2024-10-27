@@ -1,0 +1,18 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+
+import { aResult, type Result } from "@volpe/utils"
+import axios, { type AxiosResponse } from 'axios';
+import type { RandomUserApi} from "../env.d.ts"
+
+const [err, res] = (await axios.get[aResult]("https://randomuser.me/api/")) as Result<AxiosResponse<RandomUserApi>>
+
+if (err) throw new Error("tal")
+if (!res) throw new Error("tal")
+
+---
+
+<Layout title="Welcome to Astro.">
+  {res.data.results.at(0)?.name.first}
+</Layout>

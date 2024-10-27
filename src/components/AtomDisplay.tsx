@@ -1,52 +1,35 @@
 import { useStore } from "@nanostores/react";
-import { _1, _2, _3 } from "../store";
+import { _1, _2, _3, _checksAtom, _5 } from "../store";
 import { _l1, _l2, _l3 } from "../store";
 import { Filter } from "@volpe/utils";
+import type { IPerson } from "../types/Person";
 
-export const AtomDisplay = ({ personas }: { personas: Persona[] }) => {
+export const AtomDisplay = ({ personas }: { personas: IPerson[] }) => {
   const $1 = useStore(_1);
   const $2 = useStore(_2);
   const $3 = useStore(_3);
-
-  const $l1 = useStore(_l1);
-  const $l2 = useStore(_l2);
-  const $l3 = useStore(_l3);
-
-  if ($l1 || $l2 || $l3) return <>Buscando...</>;
+  const $4 = useStore(_checksAtom);
 
   const filtered = Filter.from(personas)
-    .filterByString($1, ["nombre"])
-    .filterByString($2, ["favoritos", "comida"])
-    .filterByNumber($3, ["edad"])
+    .filterByString($1, ["name"])
+    .filterByString($2, ["hobbies"])
+    .filterByNumber($3, ["favorites", "numbers"])
+    .filterByCheck($4, ["hobbies"])
     .get();
 
   return (
     <div>
-      <p>_1: {$1}</p>
-      <p>_2: {$2}</p>
-      <p>_3: {$3}</p>
-      <p>{JSON.stringify(filtered)}</p>
+      <p>name: {$1}</p>
+      <p>hobbies: {$2}</p>
+      <p>favorites.numbers: {$3}</p>
+      <p>
+        {filtered.map((person) => (
+          <a key={person.name} href={`/person/${person.name.toLowerCase()}`}>
+            {person.name}
+          </a>
+        ))}
+      </p>
+      {JSON.stringify(filtered)}
     </div>
   );
 };
-
-interface Persona {
-  nombre: string;
-  edad: number;
-  esEmpleado: boolean;
-  direccion: {
-    calle: string;
-    ciudad: string;
-    pais: string;
-  };
-  hobbies: string[];
-  redesSociales: {
-    plataforma: string;
-    username: string;
-  }[];
-  favoritos: {
-    comida: string;
-    color: string;
-    numeros: number[];
-  };
-}

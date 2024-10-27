@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from "../../layouts/Layout.astro"
+
+export async function getStaticPaths() {
+  const people = await getCollection("people") 
+
+  return people.map((person) => ({
+    params: { id: person.slug },
+    props: { person }
+  }))
+}
+
+const { person } = Astro.props
+const { data } = person
+// const { name, age, address, hobbies, favorites, isEmployed, socialMedia } = data 
+const { name } = data 
+
+const { Content } = await render(person)
+
+---
+
+<Layout title={name}>
+  <a href={`/atom`} id="backButton">Back</a>
+  <h1>{name}</h1>
+  <Content/>
+</Layout>
+
+<script>
+  document.getElementById('backButton')!.addEventListener('click', function() {
+    window.history.back(); // Esto simula el botón "Atrás" del navegador
+  });
+</script>

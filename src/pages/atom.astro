@@ -1,0 +1,17 @@
+
+---
+import Layout from '../layouts/Layout.astro';
+import { AtomDisplay, AtomInput, Checks } from '../components';
+
+import { getCollection } from 'astro:content';
+
+const people = await getCollection("people")
+const peopleData = people.map(person => person.data)
+
+---
+<Layout title="Welcome to Astro.">
+
+  <AtomInput client:only="react" />
+  <AtomDisplay client:only="react" personas={peopleData}/>
+  <Checks client:only="react"/>
+</Layout>
