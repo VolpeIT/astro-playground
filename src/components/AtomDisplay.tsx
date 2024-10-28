@@ -1,6 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { _1, _2, _3, _checksAtom, _5 } from "../store";
 import { _l1, _l2, _l3 } from "../store";
+// import { Filter } from "@volpe/utils";
 import { Filter } from "@volpe/utils";
 import type { IPerson } from "../types/Person";
 
@@ -14,8 +15,11 @@ export const AtomDisplay = ({ personas }: { personas: IPerson[] }) => {
     .filterByString($1, ["name"])
     .filterByString($2, ["hobbies"])
     .filterByNumber($3, ["favorites", "numbers"])
+    // .filterByObject({ platform: "Twitter" }, ["socialMedia"])
+    .union()
     .filterByCheck($4, ["hobbies"])
-    .get();
+    .disjunction()
+    .wrap();
 
   return (
     <div>
