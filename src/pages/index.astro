@@ -1,8 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import timeLeft, { daysLeft } from "../utils/timeLeft"
+console.log(daysLeft("2024-11-02T15:00:00.000Z") < -1)
 ---
 
 <Layout title="Welcome to Astro.">
-  <a href="/atom">Atom</a>
-  <a href="/result">Result</a>
+  <nav class="bg-red-500 px-24">
+    <div class="flex justify-center relative max-w-screen-xl m-auto">
+      <a href="tal" class="absolute left-0">tremendo</a>
+      <a href="tal">Hola</a>
+      <a href="tal">Hola</a>
+      <a href="tal">Hola</a>
+      <a href="tal" class="absolute right-0">Hola</a>
+    </div>
+  </nav>
+  <main class="text-black px-24">
+    <div class="flex justify-between max-w-screen-xl m-auto">
+      <div class="flex-1 max-w-[770px]">
+        <h1 class="text-white">Tal</h1>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500 py-4 
+          relative z-10 before-full before:bg-white
+          ">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+        <p class="bg-red-500">hola</p>
+      </div>
+      <div class="min-w-[100px]"/>
+      <form class="text-white h-min sticky top-[40px] z-20 min-w-[350px]">
+        tal
+        <input type="text" class="w-full"/>
+      </form>
+    </div>
+  </main>
+  <footer class="bg-red-500 full-width layout">
+    <div class="">
+      <a href="/grid" class="">Grid</a>
+      <a href="/layout" class="">Layout</a>
+      <a href="/atom" class="">atom</a>
+      <a href="/result" class="">result</a>
+    </div>
+  </footer>
 </Layout>
+

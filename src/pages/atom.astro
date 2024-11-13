@@ -1,7 +1,7 @@
 
 ---
 import Layout from '../layouts/Layout.astro';
-import { AtomDisplay, AtomInput, Checks } from '../components';
+import { AtomDisplay, AtomInput } from '../components';
 
 import { getCollection } from 'astro:content';
 
@@ -13,5 +13,4 @@ const peopleData = people.map(person => person.data)
 
   <AtomInput client:only="react" />
   <AtomDisplay client:only="react" personas={peopleData}/>
-  <Checks client:only="react"/>
 </Layout>

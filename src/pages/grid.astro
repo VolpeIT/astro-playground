@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { GridElement, GridContainer } from '../components';
+const image = "https://onlinepngtools.com/images/examples-onlinepngtools/man-on-the-mountain-edge-avatar.png"
+---
+
+<!-- <Layout title="grid"> -->
+  <GridContainer>
+    <GridElement 
+      imgs={[image, image]}]
+      title="Creatividad y Estrategias para Publicidad Health con impacto"
+      speakers={["Vanesa Rodriguez", "Fede"]}
+      info="Aprende a tal cosa y luego no se loco vos fijate xdddd"
+      date="7 nov."
+      soon={true}
+      href="tal"
+      pill="Proyecto"
+      color="#00F"
+    />
+
+    <GridElement 
+      imgs={[image]}
+      title="Titulazo re piola equisde"
+      speakers={["speakers"]}
+      info="Hola como tas espero que muy bien loco bueno no se que mas poner, entonces no se que mas poner"
+      date="10 feb."
+      soon={true}
+      href="tal"
+      pill="Producto"
+      color="#0F0"
+    />
+
+    <GridElement 
+      imgs={[image]}
+      title="No tan bueno"
+      speakers={["speaker1", "speaker2"]}]
+      info="una info que deja bastante que desear "
+      date="20 sep."
+      soon={false}
+      href="tal"
+      pill="UX/UI"
+      color="#F00"
+    />
+  </GridContainer>
+<!-- </Layout> -->
