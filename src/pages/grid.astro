@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import { GridElement, GridContainer } from '../components';
 const image = "https://onlinepngtools.com/images/examples-onlinepngtools/man-on-the-mountain-edge-avatar.png"
+
 ---
 
-<!-- <Layout title="grid"> -->
+<Layout title="grid">
   <GridContainer>
     <GridElement 
       imgs={[image, image]}]
@@ -41,5 +42,41 @@ const image = "https://onlinepngtools.com/images/examples-onlinepngtools/man-on-
       pill="UX/UI"
       color="#F00"
     />
+
+    <GridElement 
+      imgs={[image]}
+      title="No tan bueno"
+      speakers={["speaker1", "speaker2"]}]
+      info="una info que deja bastante que desear "
+      date="20 sep."
+      soon={false}
+      href="tal"
+      pill="UX/UI"
+      color="#F00"
+    />
+
+    <GridElement 
+      imgs={[image]}
+      title="No tan bueno"
+      speakers={["speaker1", "speaker2"]}]
+      info="una info que deja bastante que desear "
+      date="20 sep."
+      soon={false}
+      href="tal"
+      pill="UX/UI"
+      color="#F00"
+    />
+
+    <GridElement 
+      imgs={[image]}
+      title="No tan bueno"
+      speakers={["speaker1", "speaker2"]}]
+      info="una info que deja bastante que desear "
+      date="20 sep."
+      soon={false}
+      href="tal"
+      pill="UX/UI"
+      color="#F00"
+    />
   </GridContainer>
-<!-- </Layout> -->
+</Layout>

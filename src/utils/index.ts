@@ -1,1 +1,1 @@
-export * from "./daysLeft";
+export * from "./timeLeft";
