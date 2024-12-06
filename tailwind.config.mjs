@@ -7,10 +7,10 @@ export default {
         cardHover: "#667085bb",
       },
       gridTemplateColumns: {
-        market: "repeat(auto-fill, minmax(min(100%, 250px), 1fr))",
+        // market: "repeat(auto-fill, minmax(min(100%, 250px), 1fr))",
       },
       gridTemplateRows: {
-        market: "200px min-content min-content 1fr",
+        // market: "200px min-content min-content 1fr",
       },
     },
   },

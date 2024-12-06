@@ -9,7 +9,6 @@ import tailwind from "@astrojs/tailwind";
 
 let adapter;
 
-console.log(process.argv[3]);
 
 if (process.argv[3] == "--target=node") adapter = node({ mode: "standalone" });
 else adapter = netlify();

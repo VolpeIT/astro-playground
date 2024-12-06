@@ -1,82 +1,26 @@
 ---
+export const prerender = false
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=3600');
+
 import Layout from '../layouts/Layout.astro';
-import { GridElement, GridContainer } from '../components';
-const image = "https://onlinepngtools.com/images/examples-onlinepngtools/man-on-the-mountain-edge-avatar.png"
+import { EdisonMarketCards } from '../components';
+import { type AxiosResponse } from 'axios';
+import { aResult, type Result } from '@volpe/utils';
+import type { Course } from '../env';
+import { api_qa } from "../utils/axios"
+import { edisonMarketAdapter } from '../adapters/edisonMarketAdapter';
+
+const ACADEMY_ID="2a748937-dfff-419c-908e-fa16856e19fe"
+const [_err2, res2] = await api_qa.get[aResult](`/courses/market/${ACADEMY_ID}`) as Result<AxiosResponse<Course[]>>
+
+if (res2 == null) throw new Error("no data")
+
+const courses = res2.data
+const adaptedCourses = courses.map(edisonMarketAdapter)
 
 ---
 
 <Layout title="grid">
-  <GridContainer>
-    <GridElement 
-      imgs={[image, image]}]
-      title="Creatividad y Estrategias para Publicidad Health con impacto"
-      speakers={["Vanesa Rodriguez", "Fede"]}
-      info="Aprende a tal cosa y luego no se loco vos fijate xdddd"
-      date="7 nov."
-      soon={true}
-      href="tal"
-      pill="Proyecto"
-      color="#00F"
-    />
-
-    <GridElement 
-      imgs={[image]}
-      title="Titulazo re piola equisde"
-      speakers={["speakers"]}
-      info="Hola como tas espero que muy bien loco bueno no se que mas poner, entonces no se que mas poner"
-      date="10 feb."
-      soon={true}
-      href="tal"
-      pill="Producto"
-      color="#0F0"
-    />
-
-    <GridElement 
-      imgs={[image]}
-      title="No tan bueno"
-      speakers={["speaker1", "speaker2"]}]
-      info="una info que deja bastante que desear "
-      date="20 sep."
-      soon={false}
-      href="tal"
-      pill="UX/UI"
-      color="#F00"
-    />
-
-    <GridElement 
-      imgs={[image]}
-      title="No tan bueno"
-      speakers={["speaker1", "speaker2"]}]
-      info="una info que deja bastante que desear "
-      date="20 sep."
-      soon={false}
-      href="tal"
-      pill="UX/UI"
-      color="#F00"
-    />
-
-    <GridElement 
-      imgs={[image]}
-      title="No tan bueno"
-      speakers={["speaker1", "speaker2"]}]
-      info="una info que deja bastante que desear "
-      date="20 sep."
-      soon={false}
-      href="tal"
-      pill="UX/UI"
-      color="#F00"
-    />
-
-    <GridElement 
-      imgs={[image]}
-      title="No tan bueno"
-      speakers={["speaker1", "speaker2"]}]
-      info="una info que deja bastante que desear "
-      date="20 sep."
-      soon={false}
-      href="tal"
-      pill="UX/UI"
-      color="#F00"
-    />
-  </GridContainer>
+  <EdisonMarketCards courses={adaptedCourses}/>
 </Layout>
+

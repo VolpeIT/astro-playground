@@ -1,0 +1,20 @@
+---
+import type { AdaptedCourse } from '../env'
+import { EdisonMarketCard } from './EdisonMarketCard'
+
+interface Props {
+  courses: AdaptedCourse[];
+}
+
+const {courses} = Astro.props
+---
+
+<div class="text-black grid w-full auto-rows-fr gap-4">
+  {courses.map(course => <EdisonMarketCard course={course}/>)}
+</div>
+
+<style>
+  div {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  }
+</style>
