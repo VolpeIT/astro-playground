@@ -1,5 +1,6 @@
-import type { AdaptedCourse } from "../env";
-import { daysLeft } from "../utils";
+import { daysLeft } from "../../utils";
+import type { AdaptedCourse } from "./types";
+import { Calendar, Soon } from "./svgs";
 
 interface Props {
   course: AdaptedCourse;
@@ -35,6 +36,34 @@ function formatearFecha(fechaISO: string): string {
   return `${dia} ${mes}`;
 }
 
+const stylesForOneImage: React.CSSProperties = {
+  width: `170px`,
+  objectFit: "cover" as React.CSSProperties["objectFit"],
+};
+
+const stylesForTwoOrMoreImages: React.CSSProperties = {
+  width: "50%",
+  objectFit: "contain" as React.CSSProperties["objectFit"],
+  maxWidth: "180px",
+  minWidth: "130px",
+};
+
+const articleStyles = `bg-white 
+    grid grid-cols-2
+    relative p-4
+
+    rounded-lg
+    transition-transform
+    transform-gpu
+    hover:shadow-[#667085bb] 
+    hover:translate-y-[-.25rem] 
+    shadow-[0px_4px_10px_0px_rgba(0,0,0,0.2)]
+    
+  `;
+
+const pillStyles =
+  "text-white absolute left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-2 py-0.5 text-xs";
+
 export const EdisonMarketCard: React.FC<Props> = ({ course }: Props) => {
   const {
     usersJobs,
@@ -49,44 +78,21 @@ export const EdisonMarketCard: React.FC<Props> = ({ course }: Props) => {
   } = course;
 
   const twoOrMoreImages = pics.length > 1;
-  const stylesForOneImage: React.CSSProperties = {
-    width: `170px`,
-    objectFit: "cover" as React.CSSProperties["objectFit"],
-  };
-
-  const stylesForTwoOrMoreImages: React.CSSProperties = {
-    width: "50%",
-    objectFit: "contain" as React.CSSProperties["objectFit"],
-    maxWidth: "180px",
-    minWidth: "130px",
-  };
-
-  const articleStyles = `bg-white 
-    grid grid-cols-2
-    relative p-4
-
-    rounded-lg
-    transition-transform
-    transform-gpu
-    hover:shadow-[#667085bb] 
-    hover:translate-y-[-.25rem] 
-    shadow-[0px_4px_10px_0px_rgba(0,0,0,0.2)]
-    
-  `;
-
-  const pillStyles =
-    "text-white absolute left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl px-2 py-0.5 text-xs";
 
   const footer = {
     false: (
       <>
-        <span className="place-self-start col-start-1 font-semibold text-sm">
+        <span className="place-self-start col-start-1 font-semibold text-sm flex items-center gap-1">
+          <Calendar />
           {formatearFecha(startTime)}
         </span>
-        <span className="place-self-end col-start-2 text-sm text-red-500">
-          {daysLeft(startTime) < 9 &&
-            daysLeft(startTime) > -1 &&
-            "Empieza pronto"}
+        <span className="place-self-end col-start-2 text-sm text-red-500 flex items-center gap-1">
+          {daysLeft(startTime) < 9 && daysLeft(startTime) > -1 && (
+            <>
+              <Soon />
+              Empieza pronto
+            </>
+          )}
         </span>
       </>
     ),

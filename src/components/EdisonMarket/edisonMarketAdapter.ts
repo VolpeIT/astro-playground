@@ -1,4 +1,5 @@
-import type { AdaptedCourse, Course } from "../env";
+import type { Course } from "@/env";
+import type { AdaptedCourse } from "./types";
 
 export const edisonMarketAdapter = (course: Course): AdaptedCourse => {
   const href = `curso/${course.urlLanding}`;

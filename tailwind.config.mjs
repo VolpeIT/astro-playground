@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        cardHover: "#667085bb",
+        // cardHover: "#667085bb",
       },
       gridTemplateColumns: {
         // market: "repeat(auto-fill, minmax(min(100%, 250px), 1fr))",

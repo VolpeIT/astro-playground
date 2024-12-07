@@ -1,0 +1,32 @@
+---
+export const prerender = false
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=20');
+
+import type { AxiosResponse } from 'axios';
+import { EdisonMarketCard } from './EdisonMarketCard'
+import { edisonMarketAdapter } from './edisonMarketAdapter';
+import type { Course } from '@/env';
+import { aResult, type Result } from '@volpe/utils';
+import { api_qa } from "../../utils"
+
+const ACADEMY_ID="2a748937-dfff-419c-908e-fa16856e19fe"
+const [_err2, res2] = await api_qa.get[aResult](`/courses/market/${ACADEMY_ID}`) as Result<AxiosResponse<Course[]>>
+
+if (res2 == null) throw new Error("no data")
+
+const courses = res2.data
+const adaptedCourses = courses.map(edisonMarketAdapter)
+
+const currentTime = new Date().toLocaleTimeString();
+---
+
+<p>{currentTime}</p>
+<div class="text-black grid w-full auto-rows-fr gap-4">
+  {adaptedCourses.map(course => <EdisonMarketCard course={course}/>)}
+</div>
+
+<style>
+  div {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  }
+</style>
